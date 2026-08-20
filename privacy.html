@@ -19,7 +19,7 @@
 <p><strong>URSACORP LLC</strong> — applies to our Atlassian Marketplace apps:
 <em>Issue Aging Chart</em>, <em>Worklog Pivot</em>, <em>Sprint Countdown</em>, and
 <em>Epic Lens</em>.</p>
-<p>Effective date: 2026-08-11.</p>
+<p>Effective date: 2026-08-19.</p>
 
 <h2>The short version</h2>
 <p>These apps do not collect, store, transmit, or sell any of your data. There is
@@ -48,9 +48,40 @@ preferences (for example which groups you collapsed) may be kept in your own
 browser's local storage; they never leave your machine.</p>
 
 <h2>Your Jira permissions are the boundary</h2>
-<p>The apps can only show a user what that user could already see in Jira. They
-request a single read-only permission (<code>read:jira-work</code>) and no write
-access.</p>
+<p>The apps can only show you what you could already see in Jira yourself. Every
+Jira request runs as the signed-in viewer. None of the apps requests any write
+permission.</p>
+<p>Each app requests the smallest read-only permission set that its Jira API calls
+actually require:</p>
+<ul>
+  <li><strong>Issue Aging Chart</strong>: <code>read:jira-work</code></li>
+  <li><strong>Worklog Pivot</strong>: <code>read:jira-work</code></li>
+  <li><strong>Sprint Countdown</strong>: <code>read:board-scope:jira-software</code>,
+      <code>read:sprint:jira-software</code>, <code>read:issue-details:jira</code>,
+      <code>read:jql:jira</code>, <code>read:project:jira</code></li>
+  <li><strong>Epic Lens</strong>: <code>read:board-scope:jira-software</code>,
+      <code>read:sprint:jira-software</code>, <code>read:issue-details:jira</code>,
+      <code>read:jql:jira</code>, <code>read:project:jira</code>,
+      <code>read:audit-log:jira</code>, <code>read:avatar:jira</code>,
+      <code>read:field-configuration:jira</code>, <code>read:issue-meta:jira</code></li>
+</ul>
+<p>Sprint Countdown and Epic Lens use granular scopes because Jira's agile endpoints
+reject the older <code>read:jira-work</code> scope. The four extra scopes on Epic Lens
+(<code>audit-log</code>, <code>avatar</code>, <code>field-configuration</code>,
+<code>issue-meta</code>) are the set Atlassian documents as required for the
+<code>/rest/api/3/search/jql</code> endpoint. Epic Lens does not read your audit log,
+and no app uses any of these scopes for anything beyond rendering the issue list you
+see on screen.</p>
+<p>The exact permission list for each app is also shown on its Atlassian Marketplace
+listing page.</p>
+
+<h2>Security</h2>
+<p>Report a security issue to
+<a href="mailto:ursacorp.llc@gmail.com">ursacorp.llc@gmail.com</a>.</p>
+<p>The apps hold no credentials of yours. They never ask for an Atlassian Personal
+Access Token, an account password, or any other shared secret. They store no data,
+so there is no store to breach. Because they run on Atlassian Forge with no outbound
+network access, a compromise of an app cannot send your Jira data to a third party.</p>
 
 <h2>Changes and contact</h2>
 <p>If an app's behavior ever changes in a way that affects this policy, we will
