@@ -1,0 +1,95 @@
+Privacy Policy
+
+URSACORP LLC — applies to our Atlassian Marketplace apps: Issue Aging Chart,
+Worklog Pivot, Sprint Countdown, and Epic Lens.
+
+Effective date: 2026-08-19.
+
+
+The short version
+
+These apps do not collect, store, transmit, or sell any of your data. There is
+nothing to opt out of, because nothing is gathered.
+
+
+How the apps work
+
+All four apps are built on Atlassian Forge and run entirely on Atlassian's
+infrastructure, inside your own Jira site. They read Jira data (issues, sprints,
+worklogs) through Atlassian's APIs using the permissions of the person viewing
+the page, render it in your browser, and discard it. They are eligible for
+Atlassian's Runs on Atlassian program, which means they make no network calls
+outside Atlassian at all.
+
+
+What we do not do
+
+- No servers of our own — no data ever leaves Atlassian's infrastructure.
+- No analytics, tracking pixels, or telemetry of any kind.
+- No accounts, cookies, or identifiers created by us.
+- No data shared with, or sold to, anyone.
+
+
+Data retention
+
+Exports you trigger yourself (for example a CSV download in Worklog Pivot) are
+generated in your browser and saved only to your device. Small per-user display
+preferences (for example which groups you collapsed) may be kept in your own
+browser's local storage; they never leave your machine.
+
+
+Your Jira permissions are the boundary
+
+The apps can only show you what you could already see in Jira yourself. Every
+Jira request runs as the signed-in viewer. None of the apps requests any write
+permission.
+
+Each app requests the smallest read-only permission set that its Jira API calls
+actually require:
+
+- Issue Aging Chart: read:jira-work
+- Worklog Pivot: read:jira-work
+- Sprint Countdown: read:board-scope:jira-software, read:sprint:jira-software,
+  read:issue-details:jira, read:jql:jira, read:project:jira
+- Epic Lens: read:board-scope:jira-software, read:sprint:jira-software,
+  read:issue-details:jira, read:jql:jira, read:project:jira,
+  read:audit-log:jira, read:avatar:jira, read:field-configuration:jira,
+  read:issue-meta:jira
+
+Sprint Countdown and Epic Lens use granular scopes because Jira's agile
+endpoints reject the older read:jira-work scope. The four extra scopes on Epic
+Lens (audit-log, avatar, field-configuration, issue-meta) are the set Atlassian
+documents as required for the /rest/api/3/search/jql endpoint. Epic Lens does
+not read your audit log, and no app uses any of these scopes for anything
+beyond rendering the issue list you see on screen.
+
+The exact permission list for each app is also shown on its Atlassian
+Marketplace listing page.
+
+
+Security
+
+Report a security issue to ursacorp.llc@gmail.com.
+
+The apps hold no credentials of yours. They never ask for an Atlassian Personal
+Access Token, an account password, or any other shared secret. They store no
+data, so there is no store to breach. Because they run on Atlassian Forge with
+no outbound network access, a compromise of an app cannot send your Jira data
+to a third party.
+
+
+Changes and contact
+
+If an app's behavior ever changes in a way that affects this policy, we will
+update this page and the effective date before shipping the change.
+
+Questions: ursacorp.llc@gmail.com
+
+URSACORP LLC · Yerevan, Armenia
+
+
+---
+Links to re-apply in the Carrd editor (the plain text above has none):
+- "Atlassian Forge"      -> https://developer.atlassian.com/platform/forge/
+- "Runs on Atlassian"    -> https://go.atlassian.com/runs-on-atlassian
+- both email mentions    -> mailto:ursacorp.llc@gmail.com
