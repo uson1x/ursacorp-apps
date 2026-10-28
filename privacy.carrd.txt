@@ -1,51 +1,86 @@
+EDITOR NOTES, NOT PART OF THE PUBLIC POLICY
+
+Published to Carrd and read back on 2026-10-28. The app rollout is tracked separately.
+Replace only the Atlassian widgets section at
+https://privacy.ursacorp.org/#atlassian. Preserve all other product policies.
+Set the effective date below to the actual publication date, then read back the
+canonical page. This file is not automatically published by GitHub Pages.
+
+The policy text covers both existing Forge-resolver versions and the prepared
+browser-only versions without claiming that an upgrade has already happened.
+Do not describe all installations as browser-only until deployment and older
+major-version coverage have been verified.
+
+BEGIN PUBLIC ATLASSIAN SECTION
+
 Privacy Policy
 
-URSACORP LLC — applies to our Atlassian Marketplace apps: Issue Aging Chart,
+URSACORP LLC. Applies to our Atlassian Marketplace apps: Issue Aging Chart,
 Worklog Pivot, Sprint Countdown, and Epic Lens.
 
-Effective date: 2026-08-19.
-
-
-The short version
-
-These apps do not collect, store, transmit, or sell any of your data. There is
-nothing to opt out of, because nothing is gathered.
+Effective date: 2026-10-28
 
 
 How the apps work
 
-All four apps are built on Atlassian Forge and run entirely on Atlassian's
-infrastructure, inside your own Jira site. They read Jira data (issues, sprints,
-worklogs) through Atlassian's APIs using the permissions of the person viewing
-the page, render it in your browser, and discard it. They are eligible for
-Atlassian's Runs on Atlassian program, which means they make no network calls
-outside Atlassian at all.
+The apps use Atlassian Forge to host their interfaces inside Jira. The
+interface runs in your browser and reads Jira data, such as issues, boards,
+sprints and worklogs, through Atlassian's APIs as the signed-in viewer.
+Jira checks that viewer's access permissions.
+
+Report calculations, grouping, filtering and CSV creation take place in the
+browser. Browser-based versions call Jira using the Forge bridge. Earlier
+versions of Worklog Pivot and Epic Lens also process Jira API responses in
+Atlassian-hosted Forge resolver functions. Both paths use the viewer's Jira
+permissions. The apps do not send Jira report content to a URSACORP server,
+use Forge Storage, or maintain an app database of that content.
+
+The app manifests contain no external egress permissions or remote services.
+We add no external analytics, tracking pixels or telemetry to the apps. We do
+not sell Jira data. This does not prevent you from downloading or sharing an
+export you have chosen to create.
 
 
-What we do not do
+What stays on your device
 
-- No servers of our own — no data ever leaves Atlassian's infrastructure.
-- No analytics, tracking pixels, or telemetry of any kind.
-- No accounts, cookies, or identifiers created by us.
-- No data shared with, or sold to, anyone.
+Jira responses and calculated reports are held in the app page's browser
+memory. They are not saved by us as a separate copy of your Jira records.
+Jira's own records remain subject to your site's retention and access rules.
 
-
-Data retention
-
-Exports you trigger yourself (for example a CSV download in Worklog Pivot) are
-generated in your browser and saved only to your device. Small per-user display
-preferences (for example which groups you collapsed) may be kept in your own
-browser's local storage; they never leave your machine.
+Exports you trigger, such as Worklog Pivot CSV files, are generated in your
+browser and downloaded to your device. You decide where to save or share them
+and when to delete them. Small display preferences, such as collapsed groups
+in Epic Lens, may remain in browser local storage until you clear that storage.
+Issue Aging Chart and Sprint Countdown save the settings you choose in Jira's
+dashboard gadget configuration, not in a URSACORP database or Forge Storage.
 
 
-Your Jira permissions are the boundary
+Installation, operational and support information
 
-The apps can only show you what you could already see in Jira yourself. Every
-Jira request runs as the signed-in viewer. None of the apps requests any write
-permission.
+Atlassian makes installation details and operational usage metadata available
+to app vendors. This can include site or installation identifiers, installation
+status, dates, and platform usage or error counts. We use this information to
+operate and support the apps, understand adoption and review hosting usage.
+These platform records do not provide the content of your reports, confirm a
+completed report or CSV export, or measure every browser interaction. Browser
+requests do not generate app-resolver invocation metrics.
 
-Each app requests the smallest read-only permission set that its Jira API calls
-actually require:
+We may retain operational records for those purposes. When sharing findings
+publicly, we use aggregate or de-identified summaries rather than customer site
+identifiers. We do not add a separate tracking service to replace platform
+metrics.
+
+If you contact us, we receive the email address and information you choose to
+send. Please do not include confidential Jira content, customer information or
+credentials in support messages. We use the correspondence to answer your
+request and maintain support records. Contact us about information you have
+sent or a deletion request at support@ursacorp.org.
+
+
+Your Jira permissions
+
+Every Jira API request runs as the signed-in viewer. None of the apps requests
+write permission. The apps use these read-only scopes:
 
 - Issue Aging Chart: read:jira-work
 - Worklog Pivot: read:jira-work
@@ -56,40 +91,36 @@ actually require:
   read:audit-log:jira, read:avatar:jira, read:field-configuration:jira,
   read:issue-meta:jira
 
-Sprint Countdown and Epic Lens use granular scopes because Jira's agile
-endpoints reject the older read:jira-work scope. The four extra scopes on Epic
-Lens (audit-log, avatar, field-configuration, issue-meta) are the set Atlassian
-documents as required for the /rest/api/3/search/jql endpoint. Epic Lens does
-not read your audit log, and no app uses any of these scopes for anything
-beyond rendering the issue list you see on screen.
+Sprint Countdown and Epic Lens use granular scopes for Jira Software's agile
+APIs. Epic Lens's audit-log, avatar, field-configuration and issue-meta scopes
+are included for the enhanced issue-search endpoint. The app does not use them
+to read the audit log or perform a separate audit-log analysis.
 
-The exact permission list for each app is also shown on its Atlassian
-Marketplace listing page.
+The documentation for each app explains its scopes. Moving Worklog Pivot and
+Epic Lens requests from Forge resolvers to the browser does not add scopes.
 
 
-Security
+Security and contact
 
-Report a security issue to ursacorp.llc@gmail.com.
+The apps never ask for your Atlassian password, personal access token or other
+shared secret, and hold no customer credentials. Our security policy describes
+how we handle vulnerabilities and incidents. Browser execution and the absence
+of an app database do not make an application immune to security defects.
 
-The apps hold no credentials of yours. They never ask for an Atlassian Personal
-Access Token, an account password, or any other shared secret. They store no
-data, so there is no store to breach. Because they run on Atlassian Forge with
-no outbound network access, a compromise of an app cannot send your Jira data
-to a third party.
+Security reports: security@ursacorp.org
+Support and privacy questions: support@ursacorp.org
+Security policy: https://docs.ursacorp.org/security/
 
+If app behavior changes in a way that affects this policy, we will update this
+page and its effective date before shipping that change.
 
-Changes and contact
+URSACORP LLC, Yerevan, Armenia
 
-If an app's behavior ever changes in a way that affects this policy, we will
-update this page and the effective date before shipping the change.
+END PUBLIC ATLASSIAN SECTION
 
-Questions: ursacorp.llc@gmail.com
-
-URSACORP LLC · Yerevan, Armenia
-
-
----
-Links to re-apply in the Carrd editor (the plain text above has none):
-- "Atlassian Forge"      -> https://developer.atlassian.com/platform/forge/
-- "Runs on Atlassian"    -> https://go.atlassian.com/runs-on-atlassian
-- both email mentions    -> mailto:ursacorp.llc@gmail.com
+Links to apply in the Carrd editor:
+- "Atlassian Forge": https://developer.atlassian.com/platform/forge/
+- "documentation for each app": https://docs.ursacorp.org/
+- "security policy": https://docs.ursacorp.org/security/
+- "security@ursacorp.org": mailto:security@ursacorp.org
+- "support@ursacorp.org": mailto:support@ursacorp.org
